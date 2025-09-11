@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Home Warranty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif; 
+            color: #1f2937; 
+            line-height: 1.6; 
+            background: #ffffff;
+        }
+
+        /* Sticky Navigation */
+        .navbar { 
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 16px 6%; 
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+        body { padding-top: 80px; }
+
+        .logo { 
+            font-family: 'Inter', sans-serif;
+            font-size: 1.75rem; 
+            font-weight: 700; 
+            color: #1565c0;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+            vertical-align: middle;
+        }
+        
+        .nav-links { display: flex; align-items: center; gap: 32px; }
+        .nav-links a { 
+            color: #4b5563; 
+            text-decoration: none; 
+            font-size: 0.95rem; 
+            font-weight: 500; 
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .nav-links a:hover { 
+            color: #1565c0; 
+            transform: translateY(-1px);
+        }
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1565c0;
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover:after { width: 100%; }
+
+        .cta-nav-btn {
+            background: #1565c0;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 2px solid #1565c0;
+        }
+        .cta-nav-btn:hover { 
+            background: #1976d2; 
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+        }
+
+        /* Section Styling */
+        section { 
+            min-height: 100vh; 
+            padding: 100px 6% 100px 6%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            flex-direction: column;
+        }
+
+        /* Hero Section - with background image bg.jpg */
+        .hero { 
+            background: url("bg.jpg") no-repeat center center/cover, linear-gradient(135deg, #1565c0 0%, #1e88e5 50%, #42a5f5 100%);
+            color: white; 
+            overflow: hidden;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0.05)"/></radialGradient></defs><circle cx="200" cy="200" r="300" fill="url(%23a)"/><circle cx="800" cy="600" r="200" fill="url(%23a)"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        .hero-container { 
+            width: 100%; 
+            max-width: 1200px; 
+            display: grid; 
+            grid-template-columns: 1fr 400px; 
+            gap: 60px; 
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+        .hero-content { max-width: 600px; }
+        .hero-content h1 { 
+            font-family: 'Inter', sans-serif;
+            font-size: 3.2rem; 
+            font-weight: 700; 
+            line-height: 1.1; 
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-content p { 
+            font-size: 1.2rem; 
+            margin-bottom: 32px; 
+            opacity: 0.95;
+            font-weight: 400;
+        }
+        
+        .hero-cta-container { display: flex; gap: 16px; margin-top: 32px; }
+        .primary-cta { 
+            background: white;
+            color: #1565c0;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .primary-cta:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .secondary-cta {
+            background: transparent;
+            color: white;
+            padding: 16px 32px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .secondary-cta:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        /* Quote Form */
+        .quote-form {
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            width: 400px;
+            color: #1f2937;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .quote-form h2 { 
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 8px; 
+            color: #1565c0; 
+            font-size: 1.4rem; 
+            text-align: center; 
+            font-weight: 700; 
+        }
+        .quote-form .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .quote-form input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            background: #ffffff;
+        }
+        .quote-form input:focus { 
+            border-color: #1565c0; 
+            outline: none; 
+            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
+            transform: translateY(-1px);
+        }
+        .quote-form button {
+            width: 100%;
+            background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 18px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+        .quote-form button:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.3);
+        }
+
+        /* Plans Section */
+        .plans-section {
+            background: #f9fafb;
+            padding: 100px 6%;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .plans-container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+        .plan-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.05);
+            flex: 1 1 320px;
+            max-width: 350px;
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .plan-card:hover {
+            border-color: #1565c0;
+            box-shadow: 0 10px 40px rgba(21,101,192,0.15);
+            transform: translateY(-6px);
+        }
+        .plan-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        .plan-price {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 2.2rem;
+            color: #1565c0;
+            margin-bottom: 32px;
+        }
+        .plan-features {
+            text-align: left;
+            flex-grow: 1;
+            margin-bottom: 32px;
+            width: 100%;
+            list-style: none;
+            padding: 0;
+        }
+        .plan-features li {
+            margin-bottom: 16px;
+            color: #4b5563;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 24px;
+        }
+        .plan-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #1565c0;
+            font-weight: bold;
+        }
+        .plan-cta {
+            background: #1565c0;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 32px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+        .plan-cta:hover {
+            background: #1976d2;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .services-section { background: #ffffff; }
+        .testimonials-section { background: #f3f4f6; }
+        .benefits-section { background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%); color: white; }
+        .stats-section { background: #ffffff; }
+        .blog-section { background: #ffffff; }
+        .footer { background: linear-gradient(135deg, #263238 0%, #37474f 100%); color: white; min-height: auto; padding: 80px 6%; }
+
+        .section-container { width: 100%; max-width: 1200px; text-align: center; }
+        .section-title { 
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 16px; 
+            color: #1f2937;
+            letter-spacing: -0.02em;
+        }
+        .section-subtitle { 
+            font-size: 1.1rem; 
+            color: #6b7280; 
+            margin-bottom: 60px; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        /* Service Cards */
+        .service-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; margin-top: 60px; }
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #f1f5f9;
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(21, 101, 192, 0.03), transparent);
+            transition: left 0.6s;
+        }
+        .service-card:hover::before { left: 100%; }
+        .service-card:hover { 
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(21, 101, 192, 0.1);
+            border-color: #e3f2fd;
+        }
+        .service-icon { 
+            width: 72px; 
+            height: 72px; 
+            margin: 0 auto 24px; 
+            background: linear-gradient(135deg, #1565c0, #42a5f5);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .service-icon { transform: scale(1.1); }
+        .service-card h3 { 
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem; 
+            color: #1f2937; 
+            font-weight: 600; 
+            margin-bottom: 16px; 
+        }
+        .service-card p { color: #6b7280; font-size: 1rem; line-height: 1.6; }
+
+        /* Continuous Scrolling Testimonial Carousel */
+        .carousel-container { 
+            max-width: 100%; 
+            margin: 0 auto; 
+            position: relative; 
+            overflow: hidden;
+            width: 100vw;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            animation: scroll 60s linear infinite;
+            width: fit-content;
+            padding: 0 24px;
+        }
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Duplicate testimonials for seamless loop */
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #f1f5f9;
+            padding: 40px 32px;
+            min-width: 350px;
+            max-width: 350px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #1565c0;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover img { transform: scale(1.05); }
+        .testimonial-name { 
+            font-family: 'Inter', sans-serif;
+            font-weight: 600; 
+            font-size: 1.1rem; 
+            color: #1f2937; 
+            margin-bottom: 4px;
+        }
+        .testimonial-location { font-size: 0.9rem; color: #6b7280; margin-bottom: 20px; }
+        .testimonial-text { color: #4b5563; font-style: italic; font-size: 1rem; line-height: 1.6; }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Benefits Section */
+        .benefits-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 48px; width: 100%; }
+        .benefit { text-align: center; }
+        .benefit-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 24px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        .benefit:hover .benefit-icon { transform: scale(1.1); }
+        .benefit-title { 
+            font-family: 'Inter', sans-serif;
+            font-weight: 600; 
+            font-size: 1.2rem; 
+            margin-bottom: 12px; 
+        }
+        .benefit p { opacity: 0.9; line-height: 1.6; }
+
+        /* Stats Section */
+        .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; }
+        .stat { 
+            text-align: center; 
+            padding: 40px 32px; 
+            background: white; 
+            border-radius: 20px; 
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+        .stat:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+        .stat h3 { 
+            font-family: 'Inter', sans-serif;
+            font-size: 2.8rem; 
+            color: #1565c0; 
+            margin-bottom: 8px; 
+            font-weight: 700; 
+        }
+        .stat p { color: #6b7280; font-size: 1rem; font-weight: 600; }
+
+        /* Info Section - Updated with image */
+        .info-section { 
+            background: linear-gradient(to right, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            padding: 100px 6%;
+            display: flex; 
+            flex-direction: row;
+            align-items: center; 
+            justify-content: center; 
+            gap: 60px;
+        }
+        .info-content { 
+            max-width: 600px; 
+            text-align: left; 
+            flex: 1;
+        }
+        .info-content h2 { 
+            color: #1565c0; 
+            font-size: 2.5rem; 
+            margin-bottom: 32px; 
+            font-family: 'Inter', sans-serif; 
+        }
+        .info-content p { 
+            color: #4b5563; 
+            font-size: 1.2rem; 
+            margin-bottom: 24px; 
+            line-height: 1.7;
+        }
+        .info-image {
+            flex: 1;
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(21, 101, 192, 0.1);
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .info-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Blog Section */
+        .blog-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; }
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 1px solid #f3f4f6;
+        }
+        .blog-card:hover { transform: translateY(-8px); }
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1565c0, #42a5f5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        .blog-content { padding: 32px; }
+        .blog-card h4 { color: #1565c0; font-weight: 600; margin-bottom: 16px; font-size: 1.3rem; font-family: 'Inter', sans-serif; }
+        .blog-card p { color: #6b7280; margin-bottom: 20px; }
+        .blog-card a { color: #f59e0b; text-decoration: none; font-weight: 600; }
+
+        /* Modal Popup */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 24px;
+            padding: 48px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.2);
+            animation: slideUp 0.3s ease;
+        }
+        .modal-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .modal-header h2 {
+            font-family: 'Inter', sans-serif;
+            color: #1565c0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .modal-header p {
+            color: #6b7280;
+            font-size: 1rem;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #9ca3af;
+            transition: color 0.2s ease;
+        }
+        .close-modal:hover { color: #6b7280; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translate(-50%, -40%); opacity: 0; } to { transform: translate(-50%, -50%); opacity: 1; } }
+
+        /* Responsive Design */
+        @media(max-width: 1200px) {
+            .hero-container { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+            .quote-form { max-width: 450px; margin: 0 auto; }
+            .plans-container { gap: 24px; }
+            .info-section { flex-direction: column; gap: 40px; text-align: center; }
+        }
+        @media(max-width: 768px) {
+            section { padding: 80px 4% 80px 4%; min-height: auto; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .service-cards { grid-template-columns: 1fr; }
+            .navbar { padding: 16px 4%; }
+            .nav-links { gap: 20px; }
+            .hero-cta-container { flex-direction: column; gap: 12px; }
+            .plans-container { flex-direction: column; align-items: center; }
+            .plan-card { max-width: 400px; }
+            .info-section { padding: 60px 4%; }
+            .info-image { max-width: 90%; }
+            .testimonial-card { min-width: 300px; max-width: 300px; }
+            .logo { font-size: 1.4rem; }
+        }
+
+        .tcpa-consent { margin: 24px 0; }
+        .tcpa-consent label { 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 12px; 
+            font-size: 0.85rem; 
+            color: #6b7280; 
+            line-height: 1.5;
+            cursor: pointer;
+        }
+        .tcpa-consent input[type="checkbox"] { 
+            margin-top: 4px; 
+            min-width: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Navigation with Logo Image -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <img src="image.png" alt="Comprehensive Home Warranty Logo">
+        </a>
+        <div class="nav-links">
+            <a href="#services">Coverage</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#about">About</a>
+            <a href="#contact">Support</a>
+            <a href="#" style="color: whitesmoke;" class="cta-nav-btn" onclick="openModal()">Get Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content" >
+                <h1 style="color: #e0f2fe;">Protect What Matters Most</h1>
+                <p>Comprehensive home warranty protection that covers your appliances and systems when they break down. Get peace of mind with coverage trusted by over 50,000+ homeowners nationwide.</p>
+                <div class="hero-cta-container">
+                    <button class="primary-cta" onclick="openModal()">
+                        Get Free Quote
+                        <span>→</span>
+                    </button>
+                    <a href="#services" class="secondary-cta">View Coverage</a>
+                </div>
+            </div>
+            <div class="quote-form">
+                <h2>Start Your Quote</h2>
+                <p class="subtitle">Save up to $200 on your first year</p>
+                <form id="quoteForm">
+                    <div class="form-row">
+                        <input type="text" placeholder="First Name" required>
+                        <input type="text" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Home Address" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" placeholder="Zip Code" required>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone Number" required>
+                    </div>
+                    <div class="tcpa-consent">
+                        <label>
+                            <input type="checkbox" required>
+                            <span>I agree to receive calls and texts about home warranty services. Message frequency varies. Reply STOP to opt out.</span>
+                        </label>
+                    </div>
+                    <button type="submit">Get My Free Quote</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans-section">
+        <h2 class="section-title">Choose Your Protection Plan</h2>
+        <p class="section-subtitle">Flexible coverage options designed to fit your home and budget</p>
+        <div class="plans-container">
+            <div class="plan-card">
+                <div class="plan-title">Basic</div>
+                <div class="plan-price">$49/month</div>
+                <ul class="plan-features">
+                    <li>Essential appliance coverage</li>
+                    <li>Basic plumbing repairs</li>
+                    <li>Heating & cooling support</li>
+                    <li>Standard service fees ($75)</li>
+                    <li>Email customer support</li>
+                </ul>
+                <button class="plan-cta" onclick="openModal()">Choose Basic Plan</button>
+            </div>
+            <div class="plan-card">
+                <div class="plan-title">Pro</div>
+                <div class="plan-price">$79/month</div>
+                <ul class="plan-features">
+                    <li>All Basic plan features</li>
+                    <li>Electrical system coverage</li>
+                    <li>Smart home device protection</li>
+                    <li>Priority service scheduling</li>
+                    <li>Reduced service fees ($50)</li>
+                    <li>Phone & chat support</li>
+                </ul>
+                <button class="plan-cta" onclick="openModal()">Choose Pro Plan</button>
+            </div>
+            <div class="plan-card">
+                <div class="plan-title">Premium</div>
+                <div class="plan-price">$119/month</div>
+                <ul class="plan-features">
+                    <li>All Pro plan features</li>
+                    <li>Complete plumbing coverage</li>
+                    <li>Full electrical protection</li>
+                    <li>Unlimited service calls</li>
+                    <li>No service fees ($0)</li>
+                    <li>24/7 emergency support</li>
+                    <li>Same-day service guarantee</li>
+                </ul>
+                <button class="plan-cta" onclick="openModal()">Choose Premium Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="section-container">
+            <h2 class="section-title">Complete Home Protection</h2>
+            <p class="section-subtitle">Comprehensive coverage for all your home's essential systems and appliances with 24/7 customer support</p>
+            <div class="service-cards">
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>HVAC Systems</h3>
+                    <p>Complete heating and cooling protection including furnaces, AC units, heat pumps, and ductwork for year-round comfort.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🍳</div>
+                    <h3>Kitchen Appliances</h3>
+                    <p>Full coverage for refrigerators, ovens, dishwashers, microwaves, and garbage disposals to keep your kitchen running smoothly.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧺</div>
+                    <h3>Laundry Equipment</h3>
+                    <p>Protection for washers, dryers, and connections ensuring your laundry routine never gets interrupted by breakdowns.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚰</div>
+                    <h3>Plumbing Systems</h3>
+                    <p>Comprehensive coverage for pipes, fixtures, water heaters, and sewage systems protecting against costly emergency repairs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Electrical Systems</h3>
+                    <p>Expert protection for wiring, panels, outlets, and switches throughout your home with certified electricians.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏡</div>
+                    <h3>Smart Home Tech</h3>
+                    <p>Modern coverage for smart thermostats, security systems, and connected devices that make your house a smart home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section with Continuous Scrolling -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="section-container">
+            <h2 class="section-title">Trusted by Homeowners</h2>
+            <p class="section-subtitle">Real stories from customers who saved thousands with our home warranty coverage</p>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- First set of testimonials -->
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jessica Smith">
+                    <div class="testimonial-name">Jessica Smith</div>
+                    <div class="testimonial-location">Dallas, Texas</div>
+                    <div class="testimonial-text">"Comprehensive Home Warranty saved me $800 when my AC unit failed during summer. The technician was professional and fixed it the same day!"</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/47.jpg" alt="Michael Johnson">
+                    <div class="testimonial-name">Michael Johnson</div>
+                    <div class="testimonial-location">New York City, New York</div>
+                    <div class="testimonial-text">"Outstanding customer service and lightning-fast response times. Complete peace of mind for my growing family."</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Laura Wilson">
+                    <div class="testimonial-name">Laura Wilson</div>
+                    <div class="testimonial-location">Austin, Texas</div>
+                    <div class="testimonial-text">"Affordable protection that actually works. I wouldn't own a home without this comprehensive coverage."</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="David Lee">
+                    <div class="testimonial-name">David Lee</div>
+                    <div class="testimonial-location">Seattle, Washington</div>
+                    <div class="testimonial-text">"Best investment I've made as a homeowner. Quality technicians and seamless claim process every time."</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Sophia Martinez">
+                    <div class="testimonial-name">Sophia Martinez</div>
+                    <div class="testimonial-location">Miami, Florida</div>
+                    <div class="testimonial-text">"Fast, reliable service with friendly professionals. Highly recommend to all homeowners."</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="James Brown">
+                    <div class="testimonial-name">James Brown</div>
+                    <div class="testimonial-location">Denver, Colorado</div>
+                    <div class="testimonial-text">"Perfect coverage that fits my budget and protects my most valuable investment."</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/52.jpg" alt="Emily Davis">
+                    <div class="testimonial-name">Emily Davis</div>
+                    <div class="testimonial-location">Boston, Massachusetts</div>
+                    <div class="testimonial-text">"Outstanding customer support and service quality. They truly care about their customers."</div>
+                </div>
+                <!-- Duplicate set for seamless loop -->
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jessica Smith">
+                    <div class="testimonial-name">Jessica Smith</div>
+                    <div class="testimonial-location">Dallas, Texas</div>
+                    <div class="testimonial-text">"Comprehensive Home Warranty saved me $800 when my AC unit failed during summer. The technician was professional and fixed it the same day!"</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/47.jpg" alt="Michael Johnson">
+                    <div class="testimonial-name">Michael Johnson</div>
+                    <div class="testimonial-location">New York City, New York</div>
+                    <div class="testimonial-text">"Outstanding customer service and lightning-fast response times. Complete peace of mind for my growing family."</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Laura Wilson">
+                    <div class="testimonial-name">Laura Wilson</div>
+                    <div class="testimonial-location">Austin, Texas</div>
+                    <div class="testimonial-text">"Affordable protection that actually works. I wouldn't own a home without this comprehensive coverage."</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="David Lee">
+                    <div class="testimonial-name">David Lee</div>
+                    <div class="testimonial-location">Seattle, Washington</div>
+                    <div class="testimonial-text">"Best investment I've made as a homeowner. Quality technicians and seamless claim process every time."</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Sophia Martinez">
+                    <div class="testimonial-name">Sophia Martinez</div>
+                    <div class="testimonial-location">Miami, Florida</div>
+                    <div class="testimonial-text">"Fast, reliable service with friendly professionals. Highly recommend to all homeowners."</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="James Brown">
+                    <div class="testimonial-name">James Brown</div>
+                    <div class="testimonial-location">Denver, Colorado</div>
+                    <div class="testimonial-text">"Perfect coverage that fits my budget and protects my most valuable investment."</div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/52.jpg" alt="Emily Davis">
+                    <div class="testimonial-name">Emily Davis</div>
+                    <div class="testimonial-location">Boston, Massachusetts</div>
+                    <div class="testimonial-text">"Outstanding customer support and service quality. They truly care about their customers."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="section-container">
+            <h2 class="section-title" style="color: white;">Why Choose Comprehensive Home Warranty</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Industry-leading protection with benefits that go beyond basic coverage</p>
+            <div class="benefits-container">
+                <div class="benefit">
+                    <div class="benefit-icon">🏆</div>
+                    <div class="benefit-title">Certified Professionals</div>
+                    <p>Licensed, bonded, and insured technicians with extensive experience and background checks</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-title">24/7 Emergency Service</div>
+                    <p>Round-the-clock support for urgent home system emergencies, 365 days a year</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-title">Budget-Friendly Plans</div>
+                    <p>Affordable monthly payments starting at just $49/month with no hidden fees</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🛡️</div>
+                    <div class="benefit-title">Comprehensive Coverage</div>
+                    <p>Protection for all major home systems and appliances with unlimited service calls</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="section-container">
+            <h2 class="section-title">Trusted by Homeowners Nationwide</h2>
+            <div class="stats-container">
+                <div class="stat">
+                    <h3><span class="counter" data-target="98.7">0</span>%</h3>
+                    <p>Customer Satisfaction Rating</p>
+                </div>
+                <div class="stat">
+                    <h3><span class="counter" data-target="50000">1K</span>+</h3>
+                    <p>Homes Protected</p>
+                </div>
+                <div class="stat">
+                    <h3><span class="counter" data-target="24">0</span>/7</h3>
+                    <p>Customer Support</p>
+                </div>
+                <div class="stat">
+                    <h3>$<span class="counter" data-target="2.8">0</span>M+</h3>
+                    <p>Claims Processed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section with Image -->
+    <section class="info-section" id="about">
+        <div class="info-content">
+            <h2>Understanding Home Warranty Protection</h2>
+            <p>A home warranty is a comprehensive service contract that protects homeowners from unexpected repair and replacement costs of major home systems and appliances. Unlike home insurance, which covers damage from external factors, a home warranty covers the normal wear and tear that occurs over time.</p>
+            <p>With Comprehensive Home Warranty, you get immediate access to a network of qualified technicians, predictable monthly costs, and the confidence that comes from knowing your home's essential systems are protected.</p>
+            <p><strong>Don't wait for the unexpected—secure your home's future today with our comprehensive warranty protection.</strong></p>
+        </div>
+        <img class="info-image" src="mini.png" alt="Home Warranty Protection Illustration">
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="section-container">
+            <h2 class="section-title">Helpful Resources</h2>
+            <p class="section-subtitle">Expert insights and tips for smart homeownership</p>
+            <div class="blog-container">
+                <div class="blog-card">
+                    <div class="blog-image">💰</div>
+                    <div class="blog-content">
+                        <h4>Smart Financial Planning for Homeowners</h4>
+                        <p>Discover how home warranties protect your budget from unexpected repair costs and provide predictable monthly expenses.</p>
+                        <a href="#">Read Complete Guide →</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">🔧</div>
+                    <div class="blog-content">
+                        <h4>Essential Home Maintenance Schedule</h4>
+                        <p>Extend the life of your appliances and systems with our comprehensive maintenance checklist and expert recommendations.</p>
+                        <a href="#">View Maintenance Tips →</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">📋</div>
+                    <div class="blog-content">
+                        <h4>Understanding Your Warranty Claims</h4>
+                        <p>Step-by-step guide to filing claims, what to expect during service calls, and how to maximize your warranty benefits.</p>
+                        <a href="#">Learn Claims Process →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container" style="width: 100%;text-align: center;">
+            <h3 style="font-family: 'Inter', sans-serif; font-size: 2rem; margin-bottom: 16px; font-weight: 700;">Ready to Protect Your Home?</h3>
+            <p style="font-size: 1.2rem; margin-bottom: 32px; opacity: 0.9;">Join over 50,000 satisfied homeowners who trust Comprehensive Home Warranty</p>
+            <button class="primary-cta" onclick="openModal()" style="margin-bottom: 60px; color: #1565c0; background: white;">Get Started Today</button>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); text-align: left; margin-bottom: 40px;">
+                <div>
+                    <h4 style="font-family: 'Inter', sans-serif; margin-bottom: 16px; font-weight: 600;">Contact</h4>
+                    <p style="opacity: 0.8; line-height: 1.6;">1-800-HOME-GUARD<br>support@comprehensivehomewarranty.com<br>Mon-Fri 7AM-10PM EST<br>Weekend 9AM-6PM EST</p>
+                </div>
+                <div>
+                    <h4 style="font-family: 'Inter', sans-serif; margin-bottom: 16px; font-weight: 600;">Coverage Areas</h4>
+                    <p style="opacity: 0.8; line-height: 1.6;">All 50 States<br>Licensed & Insured<br>Local Service Network<br>A+ BBB Rating</p>
+                </div>
+                <div>
+                    <h4 style="font-family: 'Inter', sans-serif; margin-bottom: 16px; font-weight: 600;">Quick Links</h4>
+                    <p style="opacity: 0.8; line-height: 1.6;">File a Claim<br>Customer Portal<br>FAQ & Support<br>Service Areas</p>
+                </div>
+            </div>
+            <hr style="border: 1px solid rgba(255,255,255,0.2); margin: 40px 0;">
+            <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                © 2025 Comprehensive Home Warranty. All Rights Reserved. | 
+                <a href="#" style="color: #64b5f6; text-decoration: none;">Privacy Policy</a> | 
+                <a href="#" style="color: #64b5f6; text-decoration: none;">Terms of Service</a> | 
+                <a href="#" style="color: #64b5f6; text-decoration: none;">Cookie Policy</a>
+                <br><br>
+                Licensed home warranty provider. By submitting your information, you consent to be contacted regarding home warranty services. Standard message and data rates may apply. You may revoke consent at any time.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Popup -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Get Your Free Quote</h2>
+                <p>Enter your zip code to see available plans and pricing</p>
+            </div>
+            <form id="modalForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Enter your zip code" required style="text-align: center; font-size: 1.2rem; font-weight: 600; padding: 16px 20px; border: 2px solid #e5e7eb; border-radius: 12px; width: 100%;">
+                </div>
+                <button type="submit" style="width: 100%; background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%); color: white; border: none; border-radius: 12px; padding: 18px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 16px;">
+                    View Available Plans
+                </button>
+                <p style="text-align: center; font-size: 0.85rem; color: #6b7280; margin-top: 16px;">
+                    Takes less than 2 minutes • No commitment required
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Modal functionality
+        function openModal() {
+            document.getElementById('modalOverlay').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on overlay click
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Escape key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Modal form submission
+        document.getElementById('modalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const zipCode = this.querySelector('input').value;
+            if (zipCode.length >= 5) {
+                alert(`Great! Plans available in ${zipCode}. You'll be contacted within 24 hours with personalized quotes.`);
+                closeModal();
+            }
+        });
+
+        // Count-up animation for stats
+        function animateCounter(counter, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                
+                if(counter.dataset.target.includes('.')) {
+                    counter.textContent = (progress * (end - start) + start).toFixed(1);
+                } else if(end >= 1000) {
+                    if(value < 1000) {
+                        counter.textContent = Math.floor(value / 100) / 10 + 'K';
+                    } else {
+                        counter.textContent = Math.floor(value / 1000) + 'K';
+                    }
+                } else {
+                    counter.textContent = value;
+                }
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        let countersAnimated = false;
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.stats-section');
+            if (!statsSection) return;
+            
+            const rect = statsSection.getBoundingClientRect();
+            if(!countersAnimated && rect.top < window.innerHeight * 0.8) {
+                countersAnimated = true;
+                document.querySelectorAll('.counter').forEach(counter => {
+                    const endValue = parseFloat(counter.dataset.target);
+                    let startValue = 0;
+                    if(endValue >= 1000) startValue = 100;
+                    animateCounter(counter, startValue, endValue, 2000);
+                });
+            }
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form submissions
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! Our team will contact you within 24 hours with your personalized quote.');
+        });
+
+        // Add loading states for better UX
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.type === 'submit') {
+                    const originalText = this.textContent;
+                    this.textContent = 'Processing...';
+                    this.disabled = true;
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.disabled = false;
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
